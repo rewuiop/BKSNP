@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='EUC-KR'?>
+<PUHSERLIST>
+	<PUSHER name='common' condition='' className='BKSNP.EMR.UserDefinedClass' methodName='excutePusher' desc='' ></PUSHER>
+	<PUSHER name='common1' condition='' className='BKSNP.EMR.UserDefinedClass' methodName='excutePusher' desc='' ></PUSHER>
+	<PUSHER name='injury' condition='' className='BKSNP.ETC.AOEINJURYPusher' methodName='excutePusher' desc='' ></PUSHER>
+	
+	<PUSHER name='AddOnEmrFallRiskEvaluationToolAdult' condition='docCode:15846' className='BKSNP.ADDONEMR.AddOnEmrFallRiskEvaluationToolAdult' methodName='excutePusher' desc='' ></PUSHER>
+	
+	<PUSHER name='nhiss' condition='docCode:8982' className='BKSNP.ADDONEMR.NhissEvaluation' methodName='excutePusher' desc='' ></PUSHER>
+	
+	<PUSHER name='pressureSore' condition='docCode:8974' className='BKSNP.ADDONEMR.PsEvaluation' methodName='excutePusher' desc='' ></PUSHER>
+	
+</PUHSERLIST>

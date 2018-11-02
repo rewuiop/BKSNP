@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>BKSNP-SIGNPAD(HTML)</title>
+  <link rel="stylesheet" href="style_signpad.css" media="screen">
+</head>
+<script>
+var canvas,ctx,downCheck=0;
+function init()
+{
+	var obj = document.getElementById('canvas_sign');
+	obj.innerHTML="<CANVAS id='drawCanvas' width='500px' height='200px' ></CANVAS>";
+	canvas = document.getElementById('drawCanvas');
+	ctx = canvas.getContext('2d');
+	
+	if(!canvas) 
+	{
+		alert("캔버스 객체를 찾을 수 없음");
+		return;
+	}
+	if(!canvas.getContext)
+	{
+		alert("Drawing Contextf를 찾을 수 없음");
+     return;
+  }        
+   
+		if(!ctx)
+		{
+		alert("getContext() 함수를 호출 할 수 없음");
+		return;
+		}
+   this.Browser=navigator.appVersion.indexOf("Android"); 
+   if(this.Browser != -1)
+   {
+   	this.canvas.addEventListener('touchstart', T_Start, false);
+		this.canvas.addEventListener('touchmove',  T_Move, false);
+		this.canvas.addEventListener('touchend',   T_End, false);
+		}
+		else
+		{
+		  this.canvas.addEventListener('mousedown', M_Down, false);
+		  this.canvas.addEventListener('mousemove', M_Move, false);
+		 	this.canvas.addEventListener('mouseup',   M_Up, false);
+		}
+		
+};
+
+function T_Start (event) 
+{
+	downCheck=1;
+	if(event.touches.length==2)
+	{
+		var r_x=event.touches[0].pageX-event.touches[1].pageX; r_x *= r_x;
+		var r_y=event.touches[0].pageY-event.touches[1].pageY; r_y *= r_y;		
+		event.preventDefault();		
+	}
+	else
+	{
+		//canObj.mouseDown(event.touches[0].pageX, event.touches[0].pageY);			
+		ctx.beginPath();
+		ctx.moveTo(event.touches[0].pageX, event.touches[0].pageY);
+	}
+		
+};
+
+function T_Move (event) 
+{
+	event.preventDefault();
+	
+	if(event.touches.length==2)
+	{		
+		var r_x=event.touches[0].pageX-event.touches[1].pageX; r_x *= r_x;
+		var r_y=event.touches[0].pageY-event.touches[1].pageY; r_y *= r_y;		
+		event.preventDefault();		
+	}
+	else
+	{
+		//canObj.mouseMove(event.touches[0].pageX-position[0],event.touches[0].pageY-position[1],1);
+		if(downCheck==1)
+		{
+			ctx.lineTo(event.touches[0].pageX, event.touches[0].pageY);
+			ctx.stroke();
+		}
+	}
+};
+
+function T_End (event) 
+{
+	downCheck=0;
+	if(event.touches.length==2)
+	{
+		var r_x=event.touches[0].pageX-event.touches[1].pageX; r_x *= r_x;
+		var r_y=event.touches[0].pageY-event.touches[1].pageY; r_y *= r_y;		
+		event.preventDefault();		
+	}		
+	else
+	{
+		//canObj.mouseUp(event.touches[0].pageX-position[0],event.touches[0].pageY-position[1],1);
+		ctx.closePath();
+	}
+};
+
+function M_Down (event) 
+{
+	//canObj.mouseDown(event.offsetX, event.offsetY);
+	downCheck=1;
+	ctx.beginPath();
+	ctx.moveTo(event.offsetX, event.offsetY)
+};
+
+function M_Move (event) 
+{
+	//canObj.mouseMove(event.offsetX, event.offsetY);
+	if(downCheck==1)
+	{
+		ctx.lineTo(event.offsetX, event.offsetY);
+		ctx.stroke();
+	}
+};
+
+function M_Up (event) 
+{
+	//canObj.mouseUp(event.offsetX,event.offsetY);  
+	downCheck=0;
+	ctx.closePath();
+};
+ 
+function onOk()
+{
+	var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+	document.getElementById("drawCanvas").innerHTML = image;
+	window.returnValue = image;
+	window.close();
+}
+	
+function onCancel()
+{
+	window.returnValue = null;
+	window.close();
+}
+
+function eraser()
+{
+	canvas.width = canvas.width;
+}
+
+</script>
+<body onload='init();'>
+	<div id="wrapper">
+    <div id="canvas">
+        <div id="canvas_sign">
+					
+        </div>
+        <div id="canvas_menu">
+          <table>
+          	<tr>
+          		<td><a href="#" class="erase" title="지우기" onclick="eraser();">지우기</td>
+            		<td><a href="#" class="save" 	title="저장" 	 onclick="onOk();">저장</td>
+            		<td><a href="#" class="close" title="닫기" 	 onclick="onCancel();">닫기</td>
+          </table>
+        </div>
+    </div>
+	<div>
+</body>
+
+</html>

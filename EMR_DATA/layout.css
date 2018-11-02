@@ -1,0 +1,134 @@
+body{width:100%; background:#fff; font-family:Verdana, dotum; font-size:11px; color:#181818; margin:0 auto;}
+
+img {border:none; vertical-align:middle;}
+frame{background:#999;}
+input, textarea, frame{font:Verdana, dotum; font-weight:11px; color:#181818;}
+
+#Wrap, #header, #container, #footer{width:100%; margin:0 auto;}
+
+#header{background:url(/EMR_DATA/images/top_bg.gif) left top repeat-x; height:56px}
+	.headerWrap{width:1000px; height:56px;; margin-bottom:7px}
+	.headerWrap .logo{width:41px; padding-right:40px; padding-bottom:7px;}
+	.headerWrap .userInfo{color:#CCC; vertical-align:middle}
+	.headerWrap .navi{height:30px;}
+	.headerWrap .navi td{padding:5px 20px 0px 20px; text-align:center; font-size:12px; color:#CCC}
+	.headerWrap .navi .navi_on{background:url(/EMR_DATA/images/navi_over.gif) center top no-repeat; font-weight:bold; font-size:13px; color:#FFF}
+	.headerWrap .navi .navi_on a:link{text-decoration:none; color:#ffffff}
+	.headerWrap .navi .navi_on a:hover{text-decoration:none; color:#ffffff}
+	.headerWrap .navi .navi_on a:active{text-decoration:none; color:#ffffff}
+	.headerWrap .navi .navi_on a:visited{text-decoration:none; color:#ffffff}
+	.headerWrap .navi a:link, a:hover, a:active, a:visited {text-decoration:none; color:#FFF}
+	
+#container
+	.tabWrap{width:1000px; height:29px;}
+	.tabWrap .tabOn{height:29px; background:#1279b7;}
+	.tabWrap .tabOn .tabOnLeft{background:url(/EMR_DATA/images/tab_on_left_bg.gif) left top no-repeat; width:4px; height:29px;}
+	.tabWrap .tabOn .tabOnRight{background:url(/EMR_DATA/images/tab_on_right_bg.gif) left top no-repeat; width:7px; height:29px;}
+	.tabWrap .tabOn .tabOnTop{background:url(/EMR_DATA/images/tab_on_top_bg.gif) left top repeat-x; height:9px;}
+	.tabWrap .tabOn .tabOnText{color:#FFF; text-align:center; vertical-align:text-top; padding:0px 10px 0px 10px;}
+	
+	.tabWrap .tabOff{height:29px; background:#ededed;}
+	.tabWrap .tabOff .tabOffLeft{background:url(/EMR_DATA/images/tab_off_left_bg.gif) left top no-repeat; width:4px; height:29px;}
+	.tabWrap .tabOff .tabOffRight{background:url(/EMR_DATA/images/tab_off_right_bg.gif) left top no-repeat; width:7px; height:29px;}
+	.tabWrap .tabOff .tabOffTop{background:url(/EMR_DATA/images/tab_off_top_bg.gif) left top repeat-x; height:9px;}
+	.tabWrap .tabOff .tabOffText{text-align:center; vertical-align:text-top; padding:0px 10px 0px 10px;}
+	
+	.tabWrap .tabOff .tabOffText a:link{text-decoration:none; color:#181818}
+	.tabWrap .tabOff .tabOffText a:hover{text-decoration:none; color:#181818}
+	.tabWrap .tabOff .tabOffText a:active{text-decoration:none; color:#181818}
+	.tabWrap .tabOff .tabOffText a:visited{text-decoration:none; color:#181818}
+	
+	.tabWrap .tabOn .tabOnText a:link {text-decoration:none; color:#ffffff}
+	.tabWrap .tabOn .tabOnText a:hover{text-decoration:none; color:#ffffff}
+	.tabWrap .tabOn .tabOnText a:active{text-decoration:none; color:#ffffff}
+	.tabWrap .tabOn .tabOnText a:visited{text-decoration:none; color:#ffffff}
+	
+	.tabWrap .location{text-align:right; padding-left:30px;}
+	.tabWrap .BB{font-weight:bold;}
+	
+	.conWrap{width:1000px; background:#1279b7; padding:5px; height:600px;}
+
+	.treeM{width:100%}
+	.treeM .title{height:20px; border-bottom:1px solid #CCC; padding-left:5px; font-weight:bold;}
+	.treeM .treeM_icon{padding:5px 0px 0px 5px; margin-bottom:5px;}
+	.treeM .treeM_icon td{padding-right:5px;}
+	.treeM .line{height:1px; border-bottom:1px solid #CCC;}
+	.treeM .treeM_con{padding:1px; background:#f1f1f1}
+	
+	.searchWrap{width:100%; height:40px; background:#f1f1f1; margin-bottom:15px;}
+	.searchWrap a:link{text-decoration:none; color:#181818;}
+	.searchWrap a:hover{text-decoration:none; color:#181818;}
+	.searchWrap a:active{text-decoration:none; color:#181818;}
+	.searchWrap a:visited{text-decoration:none; color:#181818;}
+	
+	.conRight{width:100%; padding:5px;}
+	.conRight .title a:link{text-decoration:none; color:#181818}
+	.conRight .title a:hover{text-decoration:none; color:#181818}
+	.conRight .title a:active{text-decoration:none; color:#181818}
+	.conRight .title a:visited{text-decoration:none; color:#181818}
+	
+	.conRight .title{background:url(/EMR_DATA/images/icon_title.gif) top left no-repeat; padding:0px 0px 0px 17px; height:17px; font-weight:bold;}
+	.conRight .conTable01{width:100%; border-top:2px solid #444; border-bottom:1px solid #444;}
+	.conRight .conTable01 th{background:#ccc; height:25px; padding:1px 0px 1px 10px; text-align:left; font-weight:bold; border-bottom:1px solid #dedede}
+	.conRight .conTable01 td{background:none; height:25px; padding:1px 0px 1px 10px; border-bottom:1px solid #dedede}
+	.conRight .conTable01 a:link{color:#181818;}
+	.conRight .conTable01 a:hover{text-decoration:none; color:#181818;font-weight:bold;}
+	.conRight .conTable01 a:active{text-decoration:none; color:#181818;}
+	.conRight .conTable01 a:visited{text-decoration:none; color:#181818;}
+	
+	.conRight .conTable02{width:100%; border-top:2px solid #444; border-bottom:1px solid #444;}
+	.conRight .conTable02 th{background:url(/EMR_DATA/images/table_bg.gif) left top repeat-x; height:25px; font-weight:bold; border-bottom:1px solid #dedede;}
+	.conRight .conTable02 td{height:25px; border-bottom:1px solid #dedede; text-align:center}
+	.conRight .conTable02 .name{text-align:left;}
+	.conRight .conTable02 a:link{color:#181818;}
+	.conRight .conTable02 a:hover{text-decoration:none; color:#181818;font-weight:bold;}
+	.conRight .conTable02 a:active{text-decoration:none; color:#181818;}
+	.conRight .conTable02 a:visited{text-decoration:none; color:#181818;}	
+	
+	/*마우스오버시 tr에 하이라이트(강조)*/
+	.conRight .conTable02 .over{background:#f3f3f3 !important;}
+	
+	.pageNum{text-align:center;}
+	.pageNum a:link{text-decoration:none; color:#181818}
+	.pageNum a:hover{text-decoration:none; color:#181818;}
+	.pageNum a:active{text-decoration:none; color:#181818}
+	.pageNum a:visited{text-decoration:none; color:#181818}
+	
+	.myMenu{width:100%; height:100%; background:#f1f1f1; padding:20px 0px 20px 0px;}
+	.myMenu td{height:25px; width:100%; padding:0px 15px 0px 15px;}
+	.myMenu .line{height:2px; background:url(/EMR_DATA/images/mymenu_line.gif) center bottom no-repeat;}
+	.myMenu .myMon{font-weight:bold; width:100%; background:url(/EMR_DATA/images/mymenu_on_bg.gif) left top repeat-x;}
+	.myMenu .arrow{text-align:right;}
+	.myMenu .myMoff{width:100%; background:url(/EMR_DATA/images/mymenu_arrow.gif) 180px 10px no-repeat}
+	
+	.myMenu .myMon a:link{text-decoration:none; color:#ffffff; font-weight:bold;}
+	.myMenu .myMon a:hover{text-decoration:none; color:#ffffff; font-weight:bold;}
+	.myMenu .myMon a:active{text-decoration:none; color:#ffffff; font-weight:bold;}
+	.myMenu .myMon a:visited{text-decoration:none; color:#ffffff; font-weight:bold;}
+	
+	.myMenu .myMoff a:link{text-decoration:none; color:#181818}
+	.myMenu .myMoff a:hover{text-decoration:none; color:#181818;}
+	.myMenu .myMoff a:active{text-decoration:none; color:#181818}
+	.myMenu .myMoff a:visited{text-decoration:none; color:#181818}
+	
+#popWrap
+	.popTitle{height:20px; padding-left:5px; background:url(/EMR_DATA/images/pop_top_bg.gif) left top repeat-x; color:#FFF; font-weight:bold;}
+	.btnClose{width:20px; padding-right:5px; background:url(/EMR_DATA/images/pop_top_bg.gif) left top repeat-x;}
+	
+	.popTable{width:98%; border-top:2px solid #444; border-bottom:1px solid #444;}
+	.popTable th{background:#ccc; height:25px; padding:1px 0px 1px 10px; text-align:left; font-weight:bold; border-bottom:1px solid #dedede}
+	.popTable td{background:none; height:25px; padding:1px 0px 1px 10px; text-align:left; border-bottom:1px solid #dedede}
+	
+	
+#phrasalPopup
+.tabOn{height:29px; background:#1279b7;}
+.tabOn .tabOnLeft{background:url(/EMR_DATA/images/tab_on_left_bg.gif) left top no-repeat; width:4px; height:29px; }
+.tabOn .tabOnRight{background:url(/EMR_DATA/images/tab_on_right_bg.gif) left top no-repeat; width:7px; height:29px;}
+.tabOn .tabOnTop{background:url(/EMR_DATA/images/tab_on_top_bg.gif) left top repeat-x; height:9px;background:#1279b7;}
+.tabOn .tabOnText{color:#FFFFFF; font-size:12; text-align:center; vertical-align:text-top; padding:0px 10px 0px 10px; background:#1279b7;}
+	
+.tabOff{height:29px; background:#ededed;}
+.tabOff .tabOffLeft{background:url(/EMR_DATA/images/tab_off_left_bg.gif) left top no-repeat; width:4px; height:29px;}
+.tabOff .tabOffRight{background:url(/EMR_DATA/images/tab_off_right_bg.gif) left top no-repeat; width:7px; height:29px;}
+.tabOff .tabOffTop{background:url(/EMR_DATA/images/tab_off_top_bg.gif) left top repeat-x; height:9px;}
+.tabOff .tabOffText{text-align:center;font-size:12; vertical-align:text-top; padding:0px 10px 0px 10px;}

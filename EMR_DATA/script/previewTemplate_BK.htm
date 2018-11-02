@@ -1,0 +1,272 @@
+<HTML XMLNS:IE>
+<HEAD>
+<?IMPORT NAMESPACE="IE" IMPLEMENTATION="#default">
+<STYLE TYPE="text/css">
+.lorstyle
+{
+    width:7.8in;
+    height:8.7in;
+    margin-top:1.0in;
+    margin-left:0.25in;
+    margin-bottom:2.0in;
+    margin-right:0.25in;
+    background:white;   
+    border:0 dashed gray;
+}
+.pagestyle
+{ 
+    background:#ffffff;
+    border-left:1 solid black;
+    border-top:1 solid black;
+    border-right:1 solid black;
+    border-bottom:1 solid black;
+    width:8.3in;
+    height:11.7in;
+    margin:0px;
+    overflow:hidden;
+}
+
+.lorstyle_jin
+{
+    width:7.8in;
+    height:11.0in;
+    margin-top:0.1in;
+    margin-left:0.25in;
+    margin-bottom:0.1in;
+    margin-right:0.25in;
+    background:#ffffff;
+    border:0 dashed #ffffff;
+ }
+.pagestyle_jin
+{ 
+    background:#ffffff;
+    border-left:1px solid black;
+    border-top:1px solid black;
+    border-right:1px solid black;
+    border-bottom:1px solid black;
+    width:8.5in;
+    height:11.7in;
+    margin:0px;
+    overflow:hidden;
+}
+
+
+.headerstyle
+{
+    position:absolute;
+    top:0.25in;
+    width:10in;
+    left:0.2in;
+}
+.footerstyle
+{
+    position:absolute;
+    top:10.5in;
+    width:10in;
+    left:0.2in;
+}
+
+.lorstyle_L
+{
+    width:11.2in;
+    height:6.3in;
+    margin-top:1.0in;
+    margin-left:0.25in;
+    margin-bottom:1.0in;
+    margin-right:0.25in;
+    background:white;   
+    border:0 dashed gray;
+}
+.pagestyle_L
+{ 
+    background:#ffffff;
+    border-left:1 solid black;
+    border-top:1 solid black;
+    border-right:1 solid black;
+    border-bottom:1 solid black;
+    width:11.7in;
+    height:8.3in;
+    margin:0px;
+    overflow:hidden;
+}
+.headerstyle_L
+{
+    position:absolute;
+    top:0.25in;
+    width:10in;
+    left:1in;
+}
+.footerstyle_L
+{
+    position:absolute;
+    top:7.6in;
+    width:10in;
+    left:1in;
+}
+
+</STYLE>
+<SCRIPT LANGUAGE="JScript">
+var iNext = 2;
+var bHeadersFootersAdded = false;
+var bPrintStart=0;
+function PrintPage()
+{
+	layoutrect1.contentDocument.onreadystatechange = null;
+	if(paramStr[17] != null && paramStr[17]=='L')
+		printer.orientation='landscape';
+
+	printer.startDoc(titleStr);
+	var devCol = document.all.tags("DEVICERECT");
+	for (var i = 0; i < devCol.length; i++)
+	{
+		printer.printPage(devCol[i]);
+	}
+	printer.stopDoc();
+		
+}
+function printNow()
+{
+	if(layoutrect1.contentDocument.readyState == "complete")
+	{
+	}
+	else
+  {
+    layoutrect1.contentDocument.onreadystatechange = printNow;
+  }
+}
+
+function OnRectComplete()
+{
+		if (event.contentOverflow == true)
+    {
+        AddNewPage();
+        return;
+    }
+    if(printType==1)
+		{
+			bHeadersFootersAdded=true;
+		}
+		if (bHeadersFootersAdded == false)
+	  {
+        headfoot.pageTotal = document.all.tags("DEVICERECT").length;
+        
+        for (i = 1; i <= headfoot.pageTotal; i++)
+        {
+            headfoot.page = i;
+            AddHeaderAndFooterToPage(i,headfoot.pageTotal);
+        }
+        bHeadersFootersAdded = true;
+	 }
+	 if(bPrintStart==0)
+	 {
+	 	bPrintStart=1;
+	 	setTimeout("printNow()",100);
+	}
+}
+
+function AddNewPage()
+{
+    document.all("layoutrect" + (iNext - 1)).onlayoutcomplete = null;
+    newHTML  = "<br><br><IE:DEVICERECT ID='page" + iNext +  "' MEDIA='print' CLASS='pagestyle"+styleAdd+"'>";
+	  newHTML += "<IE:LAYOUTRECT ID='layoutrect" + iNext + "' ONLAYOUTCOMPLETE='OnRectComplete()' NEXTRECT='layoutrect" + (iNext + 1) + "'  CLASS='lorstyle"+styleAdd+"'/>";
+	  newHTML += "</IE:DEVICERECT>";
+	  pagecontainer.insertAdjacentHTML("beforeEnd", newHTML);
+    iNext++;
+}
+
+function AddHeaderAndFooterToPage(pageNum,total)
+{
+	var newHeader="", newFooter="";
+	if(recordType=='90')
+	{
+		newHeader += "<div class='headerstyle"+styleAdd+"'><table width='710px' height='0px'><tr height='48px' align=center>";
+		newHeader +="<td style='font:20pt 굴림;' >"+titleStr+"</td></tr>" 
+		newHeader +="<tr width=100%% style='font:9pt 굴림;' ><td width='900px'>["+chosType+"] 등록번호:"+regNo+" &nbsp&nbsp ";
+		newHeader += "환자명:"+ptName+"("+sex+"/"+age+") &nbsp&nbsp";
+		newHeader +="생년월일:"+birthDate+" &nbsp&nbsp 진료과:"+deptAndTreatDate+" &nbsp&nbsp 진료일:"+treateDate+"</td></tr>";
+		newHeader += "<tr><td><hr></td></table> </div>";
+	
+		newFooter +="<div class='footerstyle"+styleAdd+"'>";
+		newFooter +="<table width='700px' height='60px' cellpadding='0px' style='font:9pt 굴림;border:0px solid #8CBDED;'>";
+		newFooter +="<TR><TD colspan=3><HR></TD></TR>";
+		newFooter +="<tr style='margin:0px;padding:0px;'><td rowspan=2 width='120px' valign='top' align='center'><img src='/EMR_DATA/img/logo.gif' border='0px' style='width:100px;height:35px;'/></td>";
+		newFooter +="<td colspan align=left>"+((printAim=="")?(""):("용도 : "+printAim))
+					+"<b>출력</b>: "+printTime+" &nbsp&nbsp&nbsp "+ipStr+" "+printDept+" "+printPerson+"</td><td  width='40'>"+pageNum+"/"+total+"</td></tr>";
+		newFooter +="<tr><th colspan=2 valign=top align=left style='font:9pt 굴림;'>"
+					+(printAim==""?"":" 첨부한 사본은 의무기록의 원본과 틀림없음을 증명합니다.")+" </th></tr> </table></div>";
+	}
+	else if(printType=='3')
+	{
+		newHeader += "<div class='headerstyle"+styleAdd+"'><TABLE width=720 style=''  >"
+					+"<TR><TD style='font:20pt 굴림;' align='center' width='500px'>"+titleStr+"</TD><TD  align='right'><FONT face='3 of 9 Barcode' size='5pt'>*" + ocrCode + "*</FONT><br><FONT size='1pt'>" + ocrCode + "</FONT></TD></TR></TABLE></div>";
+	}
+	else
+	{
+		newHeader += "<div class='headerstyle"+styleAdd+"'><table width='710px' >";
+		newHeader +="<tr align=center><td style='font:20pt 굴림;' >"+titleStr+"</td></tr>";
+		newHeader +="<tr style='font:9pt 굴림;' ><td width=900>["+chosType+"] 등록번호:"+regNo+" &nbsp&nbsp 환자명:"+ptName+"("+sex+"/"+age+") &nbsp&nbsp";
+		newHeader +="생년월일:"+birthDate+" &nbsp&nbsp 진료과:"+deptAndTreatDate+" &nbsp&nbsp 진료일:"+treateDate+"</td></tr><tr><td><hr></td></tr></table></div>";
+
+		newFooter +="<div class='footerstyle"+styleAdd+"'>";
+		newFooter +="<table width='700px' height='60px' cellpadding='0' style='font:9pt 굴림;border:0px solid #8CBDED;'>";
+		newFooter +="<TR><TD colspan=3><hr></TD></TR>";
+		newFooter +="<tr style='margin:0;padding:0;'>";
+		newFooter +="<td rowspan=2 width='120px' valign='top' align='center'><img src='/EMR_DATA/img/logo.gif' border='0' style='width:100;'/></td>";
+		newFooter +="<td align='left' >"+((printAim=="")?(""):("용도 : "+printAim))+"<b>출력</b> : "+printTime+" &nbsp&nbsp&nbsp "
+					+ipStr+"&nbsp&nbsp&nbsp "+printDept+" "+printPerson+"</td><td width='40px'>"+pageNum+"/"+total+"</td></tr>";
+		newFooter +="<tr><td colspan=2 valign=top align=left style='font:9pt 굴림;'>첨부한 사본은 의무기록의 원본과 틀림없음을 증명합니다.</td></tr>";
+		newFooter +="</table></div>";
+	}
+	document.all("page" + pageNum).insertAdjacentHTML("afterBegin", newHeader); 
+  document.all("page" + pageNum).insertAdjacentHTML("beforeEnd", newFooter);
+}
+function Init()
+{
+	var firstDiv="";
+	firstDiv +="<IE:DEVICERECT ID='page1' MEDIA='print' CLASS='pagestyle"+styleAdd+"'>";
+	firstDiv +="<IE:lAYOUTRECT ID='layoutrect1' CONTENTSRC='document' ONLAYOUTCOMPLETE='OnRectComplete()' NEXTRECT='layoutrect2' CLASS='lorstyle"+styleAdd+"'/>";
+	firstDiv +="</IE:DEVICERECT>";
+	pagecontainer.insertAdjacentHTML("afterBegin", firstDiv);
+}
+</SCRIPT>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type=button onclick='PrintPage()' style='width:150px'value='PRINT'><br>
+<IE:TEMPLATEPRINTER ID="printer"/>
+</HEAD>
+<BODY ONLOAD="Init()" style=''>
+<IE:HEADERFOOTER ID="headfoot"/>
+<DIV ID='pagecontainer' style='padding:20px'></DIV>
+
+<SCRIPT LANGUAGE="JScript">
+
+var ChosType_Str=["입원","외래","응급"];
+var titleStr="프린트미리보기";
+var chosType="입원";
+var regNo="REGNO";
+var ptName="홍x동";
+var birthDate="720201";
+var deptAndTreatDate="의무기록실";
+var treateDate="";
+var printAim="미리보기";
+var printTime="2013-05-13";
+var ipStr="127.0.01";
+var printDept="의무기록실";
+var printPerson="김x순";
+var sex="F";
+var recordType=1;
+var age="99";
+var printType="1";
+var ocrCode="";
+
+var styleAdd="";
+
+	
+if(printType == "1"){
+	styleAdd="_jin";
+	
+	alert(33333);
+}
+
+</SCRIPT>
+
+</BODY>
+</HTML>

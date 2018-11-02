@@ -1,0 +1,353 @@
+<%@ page contentType="text/html; charset=KSC5601"%>
+<html>
+<head>
+	<title>KMI 클라이언트 예제(Web)</title>
+</head>
+<!-- KMI 클라이언트  -->
+<OBJECT id = "KMClientAX" classid = "CLSID:D3C608B5-B664-4962-91B7-289DA892953A" codeBase = "./(3.1.1.1)_KMClientAX.cab#version=3,1,1,1" width = 1 height = 1 ></OBJECT>
+<script language="javascript">
+	function Init()
+	{
+		testform.server_ip.value="127.0.0.1";
+		testform.server_port.value="7001";
+		testform.user_id.value="";
+	}
+
+	/*
+	 KMI서버에 사용자 인증서 등록
+	*/
+	function EMR_RegisterCert()
+	{
+		var ret;
+
+    // KMI 접속
+ 		if (KMClientAX.kmsConnect(testform.server_ip.value, testform.server_port.value) == 0)
+ 		{
+ 			alert("KMI 접속실패-" + KMClientAX.Error_MSG());
+ 			return;
+ 		}
+
+     // KMI 초기화
+ 	  ret = KMClientAX.kmsInit();
+ 		if (ret == "")
+ 		{
+ 			alert("KMI 초기화 실패-" + KMClientAX.Error_MSG());
+ 			KMClientAX.kmsDisconnect();
+   		return;
+ 		}
+
+     // KMI 서버에 인증서 등록
+ 		ret = KMClientAX.SetKeyAndCert(testform.user_id.value, "","","");
+ 		if(ret== "")
+   	{
+ 			alert("KMI 서버에 인증서 등록 실패-" + KMClientAX.Error_MSG());
+ 			KMClientAX.kmsDisconnect();
+   		return;
+ 		}
+ 		else
+ 		{
+ 			alert("KMI 인증서 등록 완료-" + ret);
+ 		}
+
+ 	  // KMI 접속 종료
+ 		KMClientAX.kmsDisconnect();
+ 	}
+
+
+
+
+	/*
+	 KMI서버에서 사용자 인증서 다운로드
+	*/
+	function EMR_DownloadCert()
+	{
+	  var ret, ret_dn, ret1;
+	  /* kmi 서버 접속 */
+	  ret = KMClientAX.kmsConnect(testform.server_ip.value, testform.server_port.value);
+	  if( ret == false)
+		{
+  		alert("KMI 서버 접속 실패-[" + KMClientAX.Error_MSG() + "]");
+  		KMClientAX.kmsDisconnect();
+			return
+		}
+
+		/* kmi 클라이언트 초기화 */
+		ret = KMClientAX.kmsInit();
+		if(ret == "")
+		{
+ 			alert("KMI 클라이언트 초기화 실패-[" + KMClientAX.Error_MSG() + "]");
+ 			KMClientAX.kmsDisconnect();
+      return;
+		}
+
+		/* 인증서 다운로드 */
+		ret_dn = KMClientAX.GetKeyAndCert(testform.user_id.value);
+		if(ret_dn == "")
+		{
+ 			alert("인증서 다운로드 실패-[" + KMClientAX.Error_MSG() + "]");
+ 			KMClientAX.kmsDisconnect();
+      return;
+		}
+		else
+		{
+			alert("인증서 다운로드 완료-[" + ret_dn + "]");
+			testform.user_dn.value = ret_dn;
+			//ret1 = KMClientAX.IsCertNew(testform.user_id.value, testform.user_dn.value);
+			
+			// 건양대병원 요청으로 패스워드 입력을 받도록 추가
+			ret1 = KMClientAX.IsCertNew2(testform.user_id.value, testform.user_dn.value, testform.user_pw.value);
+  		if(ret1 == 0)             // 유효한 인증서
+  		{
+  			alert("인증서 갱신기간이 아닙니다.");
+  		}
+  		else if(ret1 == 1)        // 갱신 및 KMI 서버 등록 완료
+  		{
+  			alert("인증서 갱신 성공 및 KMI 서버 등록 성공");
+  		}
+  		else if(ret1 == 2)        // 갱신 실패
+  		{
+  			alert("인증서 갱신 실패-" + KMClientAX.Error_MSG());
+  		}
+  		else if(ret1 == 3)
+  		{
+  			alert("인증서 갱신 완료, KMI서버등록 실패, 인증서 로컬(c:\Cert_bakup)에 백업완료");
+  			// 인증서 재등록 시도
+  			ret = KMClientAX.SetKeyAndCert(testform.user_id.value, "","","");
+		 		if(ret== "")
+		   	{
+		 			alert("KMI 서버에 인증서 재등록 실패-" + KMClientAX.Error_MSG());
+		 		}
+  		}
+  		else if(ret1 == 4)
+  		{
+  			alert("인증서 갱신 완료, KMI서버등록 실패, 인증서 로컬(c:\Cert_bakup)에 백업 실패-" + KMClientAX.Error_MSG());
+  			// 인증서 재등록 시도
+  			ret = KMClientAX.SetKeyAndCert(testform.user_id.value, "","","");
+		 		if(ret== "")
+		   	{
+		 			alert("KMI 서버에 인증서 재등록 실패-" + KMClientAX.Error_MSG());
+		 		}
+  		}
+  		else if(ret1 == 5)
+  		{
+  			alert("이미 만료된 인증서");
+  		}
+  		else if(ret1 == 6)
+  		{
+  			alert("사용자 요청에 의해 인증서 갱신이 취소 되었습니다.");
+  		}
+  		else
+  		{
+  			alert("기타에러-" + KMClientAX.Error_MSG());
+  		}
+		}
+
+		/* 접속 종료 */
+		KMClientAX.kmsDisconnect();
+	}
+
+	/* 로컬 PC 인증서 삭제 */
+	function EMR_DeleteLocal()
+	{
+
+
+			returnMsg =KMClientAX.LocalDelKeyAndCert(testform.user_dn.value);
+			if(returnMsg== "")
+			{
+				alert(KMClientAX.Error_MSG());
+			}
+			else
+			{
+				alert(returnMsg);
+			}
+	}
+
+
+	/* KMI 서버의 사용자 인증서 삭제 */
+	function EMR_DeleteCert()
+	{
+	  var ret, ret_dn;
+	  /* kmi 서버 접속 */
+	  ret = KMClientAX.kmsConnect(testform.server_ip.value, testform.server_port.value);
+	  if( ret == false)
+		{
+  		alert("KMI 서버 접속 실패-[" + KMClientAX.Error_MSG() + "]");
+  		KMClientAX.kmsDisconnect();
+			return
+		}
+
+		/* kmi 클라이언트 초기화 */
+		ret = KMClientAX.kmsInit();
+		if(ret == "")
+		{
+ 			alert("KMI 클라이언트 초기화 실패-[" + KMClientAX.Error_MSG() + "]");
+ 			KMClientAX.kmsDisconnect();
+      return;
+		}
+
+		/* KMI 서버의 사용자 인증서 삭제 */
+		ret_dn = KMClientAX.DelKeyAndCert(testform.user_id.value);
+		if(ret_dn== "")
+		{
+			alert("KMI서버의 사용자 인증서 삭제 실패-[" + KMClientAX.Error_MSG() + "]");
+			KMClientAX.kmsDisconnect();
+			return;
+		}
+		else
+		{
+			alert("KMI서버의 사용자 인증서[" + ret_dn + "] 를  삭제 완료");
+		}
+
+		/* 접속 종료 */
+		KMClientAX.kmsDisconnect();
+	}
+
+	/* KMI 서버의 사용자 인증서 비밀번호 변경 */
+	function EMR_ChangePass()
+	{
+		var ret_dn="";
+		ret = KMClientAX.kmsConnect(testform.server_ip.value, testform.server_port.value);
+	  if( ret == false)
+		{
+  		alert("KMI 서버 접속 실패-[" + KMClientAX.Error_MSG() + "]");
+  		KMClientAX.kmsDisconnect();
+			return
+		}
+
+		ret = KMClientAX.kmsInit();
+		if(ret == "")
+		{
+ 			alert("KMI 클라이언트 초기화 실패-[" + KMClientAX.Error_MSG() + "]");
+ 			KMClientAX.kmsDisconnect();
+      return;
+		}
+	ret_dn = KMClientAX.ChangePasswordAndSetKeyAndCert(testform.user_id.value);
+  	if(ret_dn== "")
+		{
+			alert("인증서 비밀번호 변경 실패-[" + KMClientAX.Error_MSG() + "]");
+			KMClientAX.kmsDisconnect();
+			return;
+		}
+		else
+		{
+			alert("인증서 - [" + ret_dn + "] 를  비밀번호 변경 완료");
+		}
+
+		/* 접속 종료 */
+		KMClientAX.kmsDisconnect();
+
+	}
+
+
+/*
+	 KMI서버에서 사용자 인증서 다운로드
+	*/
+	function EMR_IsCertNewExt()
+	{
+	  var ret, ret_dn, ret1;
+	  /* kmi 서버 접속 */
+	  ret = KMClientAX.kmsConnect(testform.server_ip.value, testform.server_port.value);
+	  if( ret == false)
+		{
+  		alert("KMI 서버 접속 실패-[" + KMClientAX.Error_MSG() + "]");
+  		KMClientAX.kmsDisconnect();
+			return
+		}
+
+		/* kmi 클라이언트 초기화 */
+		ret = KMClientAX.kmsInit();
+		if(ret == "")
+		{
+ 			alert("KMI 클라이언트 초기화 실패-[" + KMClientAX.Error_MSG() + "]");
+ 			KMClientAX.kmsDisconnect();
+      return;
+		}
+		
+		
+		/* 인증서 다운로드 */
+		ret_dn = KMClientAX.GetKeyAndCert(testform.user_id.value);
+		if(ret_dn == "")
+		{
+ 			alert("인증서 다운로드 실패-[" + KMClientAX.Error_MSG() + "]");
+ 			KMClientAX.kmsDisconnect();
+      return;
+		}
+		else
+		{
+			alert("인증서 다운로드 완료-[" + ret_dn + "]");
+			testform.user_dn.value = ret_dn;
+			
+			//인증서 갱신
+			ret = KMClientAX.IsCertNewExt(testform.user_id.value, testform.user_dn.value, testform.user_pw.value);
+  		if(ret == false)
+  		{
+  			alert(KMClientAX.Error_MSG());
+  		}
+		}
+
+
+		/* 접속 종료 */
+		KMClientAX.kmsDisconnect();
+		
+		/* 로컬 인증서 삭제 */
+		ret =KMClientAX.LocalDelKeyAndCert(testform.user_dn.value);
+		if(ret== "")
+		{
+			alert(KMClientAX.Error_MSG());
+		}
+		else
+		{
+			alert(ret);
+		}
+			
+	}
+
+</script>
+
+<FORM method=post name=testform >
+<TABLE border=1 borderColor=#c0c0c0 cellPadding=3 cellSpacing=0 style="HEIGHT: 80px; WIDTH: 290px" width=500>
+	<TBODY>
+	<TR>
+	<TD width="10%">
+	<font size = 2>
+	※ 인증서 관리 페이지 입니다.<br>
+	&nbsp&nbsp&nbsp아래의 기능들을 이용하기 위해서는 반드시
+	&nbsp&nbsp&nbsp서버연결을 해주어야 합니다.<br>
+	&nbsp&nbsp&nbsp종료시에는 연결 종료 버튼을 클릭하십시오.
+	</font>
+	</TD></TR>
+	</TBODY>
+</TABLE></P>
+
+
+<TABLE border=1 borderColor=#c0c0c0 cellPadding=3 cellSpacing=0 style="HEIGHT: 154px; WIDTH: 290px" width=500>
+	<TBODY>
+		<TR>
+		<TD width="35%"><font size = 2>KMI 서버주소</font></TD>
+		<TD width="50%"><INPUT name=server_ip></TD></TR>
+		<TR>
+		<TD width="35%"><font size = 2>KMI 서버 포트번호</font></TD>
+		<TD width="50%"><INPUT name=server_port></TD></TR>
+		<TR>
+		<TD width="35%"><font size = 2>사용자 ID</font></TD>
+		<TD width="50%"><INPUT name=user_id></TD></TR>
+		<TR>
+		<TD width="35%"><font size = 2>DN</font></TD>
+		<TD width="50%"><INPUT name=user_dn></TD></TR>
+		<TR>
+		<TR>
+		<TD width="35%"><font size = 2>전자서명비밀번호</font></TD>
+		<TD width="50%"><INPUT name=user_pw type=password></TD></TR>
+	</TBODY>
+</TABLE></P>
+<body leftmargin=30 OnLoad="Init();">
+<input type="button" value="KMI에 인증서 등록" style="width:300px" OnClick="javascript:EMR_RegisterCert();"><p><p>
+<input type="button" value="사용자 인증서 얻기" style="width:300px" OnClick="javascript:EMR_DownloadCert();"><p><p>
+<input type="button" value="KMI 서버내의 인증서 삭제" style="width:300px" OnClick="javascript:EMR_DeleteCert();"><p><p>
+<input type="button" value="로컬 pc의 인증서 삭제" style="width:300px" OnClick="javascript:EMR_DeleteLocal();"><p><p>
+<input type="button" value="인증서 비밀번호 변경" style="width:300px" OnClick="javascript:EMR_ChangePass();"><p><p>
+<input type="button" value="IsCertNewExt" style="width:300px" OnClick="javascript:EMR_IsCertNewExt();"><p><p>
+
+</FORM>
+</body>
+</html>

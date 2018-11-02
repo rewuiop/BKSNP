@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='euc-kr'?>
+<BK_SETUP_INFORMATION>	 
+   <!--BK_SETUP_ITEM>
+      <SETVALUE Seq='0'></SETVALUE>
+      <SETVALUE Id='setup'></SETVALUE>
+      <SETVALUE Version='10.0.30319.1'></SETVALUE>
+      <SETVALUE FileName='setup'></SETVALUE>
+      <SETVALUE Type='Execute'></SETVALUE>
+      <SETVALUE ServerPath='/EMR_DATA/applet/setup.exe'></SETVALUE>
+      <SETVALUE LocalPath='C:\\BKSNP\\setup.exe'></SETVALUE>
+      <SETVALUE RegePath='SOFTWARE\\BKSNP'></SETVALUE>
+   </BK_SETUP_ITEM-->
+   <!--BK_SETUP_ITEM> 
+   	<SETVALUE Seq='0'></SETVALUE>
+      <SETVALUE Id='BrowserJavaVersion'></SETVALUE>
+      <SETVALUE Version='11.151.2'></SETVALUE>
+      <SETVALUE FileName='jre-8u151-windows-i586'></SETVALUE>
+      <SETVALUE Type='Execute'></SETVALUE>
+      <SETVALUE ServerPath='/EMR_DATA/applet/jre-8u151-windows-i586.exe'></SETVALUE>
+      <SETVALUE LocalPath='C:\\hmc\\BKSNP\\jre-8u151-windows-i586'></SETVALUE>
+      <SETVALUE RegePath='SOFTWARE\\BKSNP'></SETVALUE>
+   </BK_SETUP_ITEM-->
+   <BK_SETUP_ITEM>
+   	<SETVALUE Seq='0'></SETVALUE>
+      <SETVALUE Id='BkSdePrintModule'></SETVALUE>
+      <SETVALUE Version='16'></SETVALUE>
+      <SETVALUE FileName='BkSdePrintModule.ocx'></SETVALUE>
+      <SETVALUE Type='com'></SETVALUE>
+      <SETVALUE ServerPath='/EMR_DATA/applet/BkSdePrintModule.ocx'></SETVALUE>
+      <SETVALUE LocalPath='C:\\hmc\\BKSNP\\BkSdePrintModule.ocx'></SETVALUE>
+      <SETVALUE RegePath='SOFTWARE\\BKSNP'></SETVALUE>
+   </BK_SETUP_ITEM>
+   <BK_SETUP_ITEM>
+   	<SETVALUE Seq='1'></SETVALUE>
+      <SETVALUE Id='ScanViewer'></SETVALUE>
+      <SETVALUE Version='29'></SETVALUE>
+      <SETVALUE FileName='ScanViewer.ocx'></SETVALUE>
+      <SETVALUE Type='com'></SETVALUE>
+      <SETVALUE ServerPath='/EMR_DATA/applet/ScanViewer.ocx'></SETVALUE>
+      <SETVALUE LocalPath='C:\\hmc\\BKSNP\\ScanViewer.ocx'></SETVALUE>
+      <SETVALUE RegePath='SOFTWARE\\BKSNP'></SETVALUE>
+   </BK_SETUP_ITEM>
+   <BK_SETUP_ITEM>
+      <SETVALUE Seq='2'></SETVALUE>
+      <SETVALUE Id='BK_capture'></SETVALUE>
+      <SETVALUE Version='1'></SETVALUE>
+      <SETVALUE FileName='bk_capture.ocx'></SETVALUE>
+      <SETVALUE Type='com'></SETVALUE>
+      <SETVALUE ServerPath='/EMR_DATA/applet/bk_capture.ocx'></SETVALUE>
+      <SETVALUE LocalPath='C:\\hmc\\BKSNP\\bk_capture.ocx'></SETVALUE>
+      <SETVALUE RegePath='SOFTWARE\\BKSNP'></SETVALUE>
+   </BK_SETUP_ITEM>
+   <BK_SETUP_ITEM>
+      <SETVALUE Seq='3'></SETVALUE>
+      <SETVALUE Id='printTemplate_BK'></SETVALUE>
+      <SETVALUE Version='1'></SETVALUE>
+      <SETVALUE FileName='printTemplate_BK.htm'></SETVALUE>
+      <SETVALUE Type='htm'></SETVALUE>
+      <SETVALUE ServerPath='/EMR_DATA/script/printTemplate_BK.htm'></SETVALUE>
+      <SETVALUE LocalPath='C:\\hmc\\BKSNP\\printTemplate_BK.htm'></SETVALUE>
+      <SETVALUE RegePath='SOFTWARE\\BKSNP'></SETVALUE>
+   </BK_SETUP_ITEM>
+   <BK_SETUP_ITEM>
+      <SETVALUE Seq='4'></SETVALUE>
+      <SETVALUE Id='logo_trans'></SETVALUE>
+      <SETVALUE Version='1'></SETVALUE>
+      <SETVALUE FileName='logo_trans.png'></SETVALUE>
+      <SETVALUE Type='htm'></SETVALUE>
+      <SETVALUE ServerPath='/EMR_DATA/img/logo_trans.png'></SETVALUE>
+      <SETVALUE LocalPath='C:\\hmc\\BKSNP\\logo_trans.png'></SETVALUE>
+      <SETVALUE RegePath='SOFTWARE\\BKSNP'></SETVALUE>
+   </BK_SETUP_ITEM>
+   <!--BK_SETUP_ITEM>
+   	<SETVALUE Seq='3'></SETVALUE>
+      <SETVALUE Id='KMClientAX'></SETVALUE>
+      <SETVALUE Version='1'></SETVALUE>
+      <SETVALUE FileName='KMClientAX.ocx'></SETVALUE>
+      <SETVALUE Type='ocx'></SETVALUE>
+      <SETVALUE ServerPath='/EMR_DATA/applet/KMClientAX.ocx'></SETVALUE>
+      <SETVALUE LocalPath='C:\\BKSNP\\KMClientAX.ocx'></SETVALUE>
+      <SETVALUE RegePath='SOFTWARE\\BKSNP'></SETVALUE>
+   </BK_SETUP_ITEM-->
+</BK_SETUP_INFORMATION>

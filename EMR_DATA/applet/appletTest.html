@@ -1,0 +1,23 @@
+<%
+	session.setAttribute("Agent", request.getParameter("Agent"));
+%>
+<html>
+<script>
+	function addApplet() {
+		var appDom = "";
+		appDom += "<APPLET id='APP_1024' name='a_1024' archive='signedpainter.jar' code='Main/Paint_Helper.class' width='670' height='450'>";
+	  appDom += "<PARAM name=CODEBASE value=/EMR_DATA/applet/>";
+		appDom += "</APPLET>";
+		
+		//document.body.innerHtml += "<INPUT type='button' value='¾ÖÇÃ¸´ Ãß°¡2' onclick='addApplet();'></INPUT>";
+		document.body.innerHTML += appDom;
+	}
+	
+</script>
+<body>
+<INPUT type='button' value='¾ÖÇÃ¸´ Ãß°¡' onclick='addApplet();'></INPUT>
+	<APPLET id='APP_1024' name='a_1024' archive='signedpainter.jar' code='Main/Paint_Helper.class' width='670' height='450'>
+		<PARAM name=CODEBASE value=/EMR_DATA/applet/>
+	</APPLET>
+</body>
+</html>

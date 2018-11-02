@@ -1,0 +1,12 @@
+[version] 
+signature="$CHICAGO$"
+AdvancedINF=2.0
+
+[Add.Code]
+MagnifyGlass.ocx=MagnifyGlass.ocx
+
+[MagnifyGlass.ocx]
+file-win32-x86=thiscab
+clsid={E265D402-C31F-4D2D-A976-5454EE31E229}
+FileVersion=1,1,0,0
+RegisterServer=yes

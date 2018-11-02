@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>BKSNP-SIGNPAD</title>
+  <link rel="stylesheet" href="style_signpad.css" media="screen">
+</head>
+<script>
+	var SIGNPAD = null;
+	function init() {
+		SIGNPAD = document.getElementById('Signpad');
+		resizePanel(window.dialogArguments);
+	}
+	
+	function resizePanel(obj) {
+		if(!obj)
+			return;
+		
+		var w = obj[0];
+		var h = obj[1];
+		document.getElementById('canvas').style.width=w;
+		document.getElementById('canvas').style.height=h;
+		document.getElementById('canvas_sign').style.width=w;
+		document.getElementById('canvas_sign').style.height=h;
+		
+		SIGNPAD.style.width=w;
+		SIGNPAD.style.height=h;
+	}
+	
+	function getImgData() {
+		if(!SIGNPAD)
+			return;
+		return SIGNPAD.getImageBase64Data();
+	}
+	
+	function getImgPointData() {
+		if(!SIGNPAD)
+			return;
+		return SIGNPAD.getImagePointData();	
+	}
+	
+	function clrImage() {
+		if(!SIGNPAD)
+			return;
+		SIGNPAD.clearImage();
+	}
+	
+	function onOk() {
+		var base64Data = getImgData();
+		window.returnValue = 'data:image/jpeg; base64, ' + base64Data;
+		window.close();
+	}
+	
+	function onCancel() {
+		/*
+		var retVal = window.confirm("서명을 취소하시겠습니까?");
+		if(retVal!=true);
+			return;
+		*/
+		window.returnValue = null;
+		window.close();
+	}
+</script>
+<body onload='init();'>
+	<div id="wrapper">
+    <div id="canvas">
+        <div id="canvas_sign">
+        	<APPLET id='Signpad' CODE='SignPad.class'  ARCHIVE='SignPad.jar' style='width:0px; height:0px; border:0px solid #ababab;'>
+						<PARAM NAME='CODEBASE' VALUE='/EMR_DATA/applet/' />
+						<PARAM NAME='INVALID' VALUE='true' />
+						<PARAM NAME='LINEWEIGHT' VALUE='5' />
+					</APPLET>
+        </div>
+        <div id="canvas_menu">
+          <table>
+          	<tr>
+          		<td><a href="#" class="erase" title="지우기" onclick="clrImage();">지우기</td>
+            		<td><a href="#" class="save" 	title="저장" 	 onclick="onOk();">저장</td>
+            		<td><a href="#" class="close" title="닫기" 	 onclick="onCancel();">닫기</td>
+          </table>
+        </div>
+    </div>
+	<div>
+</body>
+
+</html>

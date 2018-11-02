@@ -1,0 +1,50 @@
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{
+	border:0;
+	font-size:100%;
+	font:inherit;
+	vertical-align:baseline;
+	margin:0;
+	padding:0
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+body{
+	border:0px solid #ababab;
+	background:#333;
+}
+
+#canvas{
+	background:#333;
+	float:left;
+	position:relative;
+	padding:5px;
+	height:200px;
+	webkit-box-shadow:  0px 3px 3px 3px rgba(0, 0, 0, 0.05);
+	box-shadow:  0px 3px 3px 3px rgba(0, 0, 0, 0.2);
+ }
+#canvas_sign{ 
+	width:500px;
+	height:200px;
+	margin:0;
+	background:#fff;
+}
+#canvas_menu{
+	background:#333;
+	width:132px;
+	height:44px;
+	position:absolute;
+	bottom:-49px;
+	right:0;
+	margin:0;
+	padding:5px;
+	webkit-box-shadow:  0px 3px 3px 3px rgba(0, 0, 0, 0.05);
+   box-shadow:  0px 3px 3px 3px rgba(0, 0, 0, 0.2);
+ }
+#canvas_menu a{ display:inline-block;float:left;width:44px;height:44px;text-align: left;text-indent: -9999px;}
+#canvas_menu a.save:hover {background:url(images/agg_hover_08.png) center center no-repeat;}
+#canvas_menu a.erase:hover{background:url(images/agg_hover_09.png) center center no-repeat;}
+#canvas_menu a.close:hover {background:url(images/agg_hover_15.png) center center no-repeat;}
+#canvas_menu a.save {background:url(images/agg_active_08.png) center center no-repeat;border:none;}
+#canvas_menu a.erase{background:url(images/agg_active_09.png) center center no-repeat;}
+#canvas_menu a.close {background:url(images/agg_active_15.png) center center no-repeat;}

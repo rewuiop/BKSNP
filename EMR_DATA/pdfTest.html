@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<TITLE>PRINT TEST</TITLE>
+
+<SCRIPT src="Ajax/Ajax.js"></SCRIPT>
+
+<SCRIPT>
+
+function HI_Print()
+{
+var obj= document.getElementById('BkPrint');
+var param1="192.168.0.100/EMR_DATA/xml/2017/7_7/2136054_testmd_00919064_1499327620963.XML^1^0^2017-07-06 Progress Note(간단형)(공통)^0^00919064^박연희^1959-05-04^F^58^2017-12-13 12:54:25^^^172.20.50.52^^undefined$iChosNo|00919064$ipName|박연희$ipSex|Female$ipIdNum|590504-2025418$ipAddress|서울특별시 도봉구 방학동 343 성삼빌라 2-104$ipAddNo|132-202$ipAge|58$ipCreNo|80122865446$ipEmail|$ipPhone1|02-900-5423$ipPhone2|010-7229-5423$ipParId|$ipParName|송아리$ipCountry|$ipDobr|1959-05-04$ipDotm|$ipPoby|^진료^2017-07-06 16:53:40^^^^^^^^내과 - 소화기^2015-09-21^AAA^0^2017-07-06^null^^false^1";
+
+
+//var param2="192.168.0.100/EMR_DATA/xml/2016/6_29/2140613_testmd_00919064_1467102746119.XML^1^0^2016-06-28 신경과 Admission Note(Stroke-I6359)^0^00919064^박연희^1959-05-04^F^57^2017-12-13 12:54:46^^^172.20.50.52^^undefined$iChosNo|00919064$ipName|박연희$ipSex|Female$ipIdNum|590504-2025418$ipAddress|서울특별시 도봉구 방학동 343 성삼빌라 2-104$ipAddNo|132-202$ipAge|58$ipCreNo|80122865446$ipEmail|$ipPhone1|02-900-5423$ipPhone2|010-7229-5423$ipParId|$ipParName|송아리$ipCountry|$ipDobr|1959-05-04$ipDotm|$ipPoby|^진료^2016-06-28 17:32:26^^^^^^^^내과 - 소화기^2015-09-21^AAA^0^2016-06-28^null^^false^1";
+var param2="192.168.2.43:8080/EMR_DATA/xml/2017/11_27/207_1840479_01245809_1511763066092.XML^1^1^test2222^1^01245809^홍길동^1998-08-08^M^환자16^15:11:24^유저부서^박의사^IP^출력용도^^^test2222^^^^^^^^환자10^01245809^0^";
+
+var html1="http://192.168.0.100/EMR_DATA/html/"+"pr_2136054_7.html";
+//var html2="http://192.168.0.100/EMR_DATA/html/"+"pr_2140613_59.html";
+var html2="http://192.168.2.43:8080/EMR_DATA/html/pr_207_4.html";
+/*한일병원 ORG SOURCE
+var a = obj.PrintPage("http://" +serverAddr+":8180/EMR_DATA/html/"+array[1],
+										makeParameter(serverAddr+":8180"+array[0], array[5], array[6], array[8], array[9], array[10], array[11], array[12], array[13], array[14], array[15], array[18], array[19],array[20],array[21],array[17],array[22],docCode,array[4] ) , 760, 1100 );// 응급실 서식
+*/
+
+/* PrintPDFPage(Print Html URL, Print Info Parameter, FileName, Width, Height);
+*/
+//var a = obj.PrintPDFPage(html2, param2 ,"","00919064_박연희_입원20171231_20171214", 1,760, 1100 );// 응급실 서식
+//SDE서식
+var a = obj.PrintPDFPage(html2, param2 ,"C:\\BKSNP\\PDF\\123456\\입원\\NS\\20180206\\0021","test20180206", 1,760, 1100 );// 응급실 서식
+
+
+
+//영상EMR
+//var a = obj.ImageDownLoad("https://preemrdev.hyumc.com:8081/EMR_DATA/TIF/data16/chartimg16/6081/99161206054426081.tif", "C:\\BKSNP\\PDF\\123456\\입원\\NS\\20180206\\0021", "입퇴원요약지(Summary)_1");
+if(a==1)
+	alert("출력이 완료되었습니다.")
+}
+
+function HI_Print2()
+{
+var obj= document.getElementById('BkPrint');
+var param1="192.168.0.100/EMR_DATA/xml/2017/7_7/2136054_testmd_00919064_1499327620963.XML^1^1^2017-07-06 Progress Note(간단형)(공통)^0^00919064^박연희^1959-05-04^F^58^2017-12-13 12:54:25^^^172.20.50.52^^undefined$iChosNo|00919064$ipName|박연희$ipSex|Female$ipIdNum|590504-2025418$ipAddress|서울특별시 도봉구 방학동 343 성삼빌라 2-104$ipAddNo|132-202$ipAge|58$ipCreNo|80122865446$ipEmail|$ipPhone1|02-900-5423$ipPhone2|010-7229-5423$ipParId|$ipParName|송아리$ipCountry|$ipDobr|1959-05-04$ipDotm|$ipPoby|^진료^2017-07-06 16:53:40^^^^^^^^내과 - 소화기^2015-09-21^AAA^0^2017-07-06^null^^false^1";
+
+
+//var param2="192.168.0.100/EMR_DATA/xml/2016/6_29/2140613_testmd_00919064_1467102746119.XML^1^1^2016-06-28 신경과 Admission Note(Stroke-I6359)^0^00919064^박연희^1959-05-04^F^57^2017-12-13 12:54:46^^^172.20.50.52^^undefined$iChosNo|00919064$ipName|박연희$ipSex|Female$ipIdNum|590504-2025418$ipAddress|서울특별시 도봉구 방학동 343 성삼빌라 2-104$ipAddNo|132-202$ipAge|58$ipCreNo|80122865446$ipEmail|$ipPhone1|02-900-5423$ipPhone2|010-7229-5423$ipParId|$ipParName|송아리$ipCountry|$ipDobr|1959-05-04$ipDotm|$ipPoby|^진료^2016-06-28 17:32:26^^^^^^^^내과 - 소화기^2015-09-21^AAA^0^2016-06-28^null^^false^1";
+var param2="preemrdev.hyumc.com:8081/EMR_DATA/xml/2017/11_27/207_1840479_01245809_1511763066092.XML^1^1^test2222^1^01245809^홍길동^1998-08-08^M^환자16^15:11:24^유저부서^박의사^IP^출력용도^^^test2222^^^^^^^^환자10^01245809^0^";
+
+var html1="http://192.168.0.100/EMR_DATA/html/"+"pr_2136054_7.html";
+//var html2="http://192.168.0.100/EMR_DATA/html/"+"pr_2140613_59.html";
+var html2="https://preemrdev.hyumc.com:8081/EMR_DATA/html/pr_207_4.html";
+/*한일병원 ORG SOURCE
+var a = obj.PrintPage("http://" +serverAddr+":8180/EMR_DATA/html/"+array[1],
+										makeParameter(serverAddr+":8180"+array[0], array[5], array[6], array[8], array[9], array[10], array[11], array[12], array[13], array[14], array[15], array[18], array[19],array[20],array[21],array[17],array[22],docCode,array[4] ) , 760, 1100 );// 응급실 서식
+*/
+
+/* PrintPDFPage(Print Html URL, Print Info Parameter, FileName, Width, Height);
+*/
+//var a = obj.PrintPage(html2, param2 , 760, 1100 );// 응급실 서식
+var a = obj.NewPrintPage(html2, param2 , 760, 1100 );// 응급실 서식
+
+}
+
+function HI_Print3()
+{
+var obj= document.getElementById('BkPrint');
+var param1="192.168.0.100/EMR_DATA/xml/2017/7_7/2136054_testmd_00919064_1499327620963.XML^1^0^2017-07-06 Progress Note(간단형)(공통)^0^00919064^박연희^1959-05-04^F^58^2017-12-13 12:54:25^^^172.20.50.52^^undefined$iChosNo|00919064$ipName|박연희$ipSex|Female$ipIdNum|590504-2025418$ipAddress|서울특별시 도봉구 방학동 343 성삼빌라 2-104$ipAddNo|132-202$ipAge|58$ipCreNo|80122865446$ipEmail|$ipPhone1|02-900-5423$ipPhone2|010-7229-5423$ipParId|$ipParName|송아리$ipCountry|$ipDobr|1959-05-04$ipDotm|$ipPoby|^진료^2017-07-06 16:53:40^^^^^^^^내과 - 소화기^2015-09-21^AAA^0^2017-07-06^null^^false^1";
+
+
+//var param2="192.168.0.100/EMR_DATA/xml/2016/6_29/2140613_testmd_00919064_1467102746119.XML^1^0^2016-06-28 신경과 Admission Note(Stroke-I6359)^0^00919064^박연희^1959-05-04^F^57^2017-12-13 12:54:46^^^172.20.50.52^^undefined$iChosNo|00919064$ipName|박연희$ipSex|Female$ipIdNum|590504-2025418$ipAddress|서울특별시 도봉구 방학동 343 성삼빌라 2-104$ipAddNo|132-202$ipAge|58$ipCreNo|80122865446$ipEmail|$ipPhone1|02-900-5423$ipPhone2|010-7229-5423$ipParId|$ipParName|송아리$ipCountry|$ipDobr|1959-05-04$ipDotm|$ipPoby|^진료^2016-06-28 17:32:26^^^^^^^^내과 - 소화기^2015-09-21^AAA^0^2016-06-28^null^^false^1";
+var param2="192.168.2.43:8080/EMR_DATA/xml/2017/11_27/207_1840479_01245809_1511763066092.XML^1^1^test2222^1^01245809^홍길동^1998-08-08^M^환자16^15:11:24^유저부서^박의사^IP^출력용도^^^test2222^^^^^^^^환자10^01245809^0^";
+
+var html1="http://192.168.0.100/EMR_DATA/html/"+"pr_2136054_7.html";
+//var html2="http://192.168.0.100/EMR_DATA/html/"+"pr_2140613_59.html";
+var html2="http://192.168.2.43:8080/EMR_DATA/html/pr_207_4.html";
+/*한일병원 ORG SOURCE
+var a = obj.PrintPage("http://" +serverAddr+":8180/EMR_DATA/html/"+array[1],
+										makeParameter(serverAddr+":8180"+array[0], array[5], array[6], array[8], array[9], array[10], array[11], array[12], array[13], array[14], array[15], array[18], array[19],array[20],array[21],array[17],array[22],docCode,array[4] ) , 760, 1100 );// 응급실 서식
+*/
+
+/* PrintPDFPage(Print Html URL, Print Info Parameter, FileName, Width, Height);
+*/
+//var a = obj.PrintPDFPage(html2, param2 ,"","00919064_박연희_입원20171231_20171214", 1,760, 1100 );// 응급실 서식
+//SDE서식
+//var a = obj.PrintPDFPage(html2, param2 ,"C:\\BKSNP\\PDF\\123456\\입원\\NS\\20180206\\0021","test20180206", 1,760, 1100 );// 응급실 서식
+
+
+
+//영상EMR
+var a = obj.ImageDownLoad("https://preemrdev.hyumc.com:8081/EMR_DATA/TIF/data16/chartimg16/6081/99161206054426081.tif", "C:\\BKSNP\\PDF\\123456\\입원\\NS\\20180206\\0021", "입퇴원요약지(Summary)_1");
+// var a = obj.ImageDownLoad("https://preemrdev.hyumc.com:8081/EMR_DATA/TIF/data16/chartimg16/9440/51170303094159440.tif", "C:\\00596722\\외래\\RR\\20170302\\1001","51170303094159440");
+if(a==1)
+	alert("출력이 완료되었습니다.")
+}
+
+function HI_Print4()
+{
+var obj= document.getElementById('BkPrint');
+//영상EMR 출력
+var a = obj.ImagePrintPage("https://preemrdev.hyumc.com:8081/EMR_DATA/TIF/data16/chartimg16/6081/99161206054426081.tif", "입퇴원요약지(Summary)_1",  '1',"강*름","2018-02-01 10:54:53","구자경");
+if(a==1)
+	alert("출력이 완료되었습니다.")
+}
+</SCRIPT>
+</head>
+<body>
+
+
+
+<!--button onclick='pint'>콜 Ajax</button-->
+<input type='button' onclick='HI_Print()' value='+ PrintPDFPage 호출 +'>
+<br><br>
+<input type='button' onclick='HI_Print2()' value='+ NewPrintPage 호출 +'>
+<br><br>
+<input type='button' onclick='HI_Print3()' value='+ ImageDownLoad 호출 +'>
+<br><br>
+<input type='button' onclick='HI_Print4()' value='+ ImagePrintPage 호출 +'>
+<object id = "BkPrint" classid="clsid:FF992A61-0A51-4D39-BAFC-E154F5BA8945" style="display:none;">
+		</object>
+</body>
+</html>

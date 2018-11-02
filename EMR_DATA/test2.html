@@ -1,0 +1,60 @@
+<html>
+<head>
+</head>
+<script>
+	function init()
+	{
+		var showScanView = document.getElementById('showScanView');
+		showScanView.style.display="block";
+		//00596722▶홍*동▶32161121111305070▶출력자▶NS▶Y▶192.168.0.100▶8080◀서식지명1★http://127.0.0.1:8080/TEST/01.tif★20171217★NR◎서식지명2★http://127.0.0.1:8080/TEST/02.tif★20171217★NR◎서식지명3★http://127.0.0.1:8080/TEST/03.tif★20171217★NR◎서식지명4★http://127.0.0.1:8080/TEST/04.tif★20171217★NR◎서식지명5★http://127.0.0.1:8080/TEST/05.tif★20171217★NR◎서식지명6★http://127.0.0.1:8080/TEST/06.tif★20171217★ENT◎
+		//서식지명1★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명2★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명3★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎
+		var imgPathStr = "00596722▶홍*동▶32161121111305070▶출력자▶NS▶Y▶preemrdev.hyumc.com▶8081◀서식지명1★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명2★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명3★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎서식지명4★https://preemrdev.hyumc.com:8081/EMR_DATA/14120711100220000.tif★20171217★NR◎";
+		
+		showScanView.SetImage(imgPathStr);	
+	}
+</script>
+<body>
+	<input type='button' onclick='init()' value=' click '>
+	<OBJECT id='showScanView' classid='CLSID:F58631E2-B329-4341-90DD-D9B5C02046D9' style='display:none;width:800px;height:830px;' ></OBJECT>
+</body>
+</html>
+<!--html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<script>
+	function init()
+	{
+		var SERVERADDR = "http://192.168.2.43:8080";
+	   var url = SERVERADDR+"/EMR_DATA/applet/BK_Solution.XML";
+	   var axObj = null;
+      try{
+        axObj = new ActiveXObject("BKACTIVEXMANAGER.BKActiveXManagerCtrl.1");
+        if(axObj){
+          Installed = true;  
+        }else{
+          Installed = false;
+        }
+      }catch(e){
+        Installed = false;
+      }
+      finally
+      {
+       axObj = null;
+      }
+      if(Installed == true){
+        	ActiveX.ExecuteBK(url,SERVERADDR);
+      }else{
+         alert("BKActiveXManager Controller가 정상적으로 설치되지 않았습니다.\n\n\n"+
+               "----------------------------- [설치 안 될 경우 체크사항] -----------------------------\n\n"+
+               "\"인터넷옵션 - 보안 - 사용자 지정수준 - 서명 안 된 ActiveX 컨트롤 다운로드 - 확인\" 체크 후\n\n"+
+               "다시 실행하시기 바랍니다.");
+      }
+    	
+	
+	
+}
+</script>
+<body stylle='width:1100px;height:1000px;' onload='init()'>
+<object id = "ActiveX" classid="clsid:444BF9CD-6AB4-4B77-86BC-18F7C8BC7B53" codebase="/EMR_DATA/applet/BKActiveXManager.cab#version=1,2,0,12" style="display:none"></object>
+</body>
+</html-->

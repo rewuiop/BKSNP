@@ -1,0 +1,16 @@
+<html>
+<head><title>jre install</title></head>
+<script>
+function init()
+{
+	var serverAddr = 'https://preemrdev.hyumc.com:8081';
+	var url = serverAddr+"/EMR_DATA/applet/BK_Solution.XML";
+	var activeXObj = document.getElementById('ActiveX');
+	activeXObj.ExecuteBK(url,serverAddr);
+}
+</script>
+<body>
+	<button onclick='init()'></button>
+<OBJECT id='ActiveX' CLASSID='CLSID:444BF9CD-6AB4-4B77-86BC-18F7C8BC7B53' codebase="/EMR_DATA/applet/BKActiveXManager.cab#version=1,2,0,19" style='display:none'></OBJECT>
+</body>
+</html>
